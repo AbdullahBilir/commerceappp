@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import Home from "../pages/Home";
 
-function Cards({ item, baseUrl, index }) {
+function Cards({ item, index }) {
   const [active, setActive] = useState(true);
+
+  const baseUrl = "http://localhost:1337";
 
   return (
     <div>
@@ -27,15 +29,15 @@ function Cards({ item, baseUrl, index }) {
       <div>
         <p className=" font-medium my-2 text-base">{item.attributes.title}</p>
         <p className="font-bold text-sm ">
-          {item.attributes.Pirice}
-          <span className="ml-1">TL</span>
           <span
             className={`${
-              item.id == 6 ? "ml-4" : ""
+              item.id == 6 ? "mr-4" : ""
             } line-through font-medium text-sm`}
           >
             {item.attributes.price2} {item.id == 6 ? "TL" : ""}
           </span>
+          {item.attributes.Pirice}
+          <span className="ml-1">TL</span>
         </p>
       </div>
     </div>

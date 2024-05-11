@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -7,10 +7,18 @@ import img1 from "../img/pexels-badun-18148377.jpg";
 import img2 from "../img/pexels-cottonbro-7407117.jpg";
 import { GoChevronRight, GoChevronLeft } from "react-icons/go";
 import Cards from "../components/Cards";
-
-const baseUrl = "http://localhost:1337";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { fetchItems } from "../features/homeSlice";
 
 function Home() {
+  const response = useSelector((state) => state.home);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchItems());
+  }, []);
+
   const settings = {
     dots: false,
     infinite: true,
@@ -20,20 +28,6 @@ function Home() {
     autoplay: true,
     autoplaySpeed: 5000,
   };
-
-  const [fetchImg, setimg] = useState(null);
-
-  const fetchStrapi = async () => {
-    const response = await fetch(
-      "http://localhost:1337/api/products?populate=*"
-    );
-    const rest = await response.json();
-    setimg(rest);
-  };
-
-  useEffect(() => {
-    fetchStrapi();
-  }, []);
 
   const sliderRef = useRef(null);
 
@@ -148,8 +142,8 @@ function Home() {
         <h1 className="text-4xl  ">Featured Products</h1>
       </div>
       <div className="flex  w-[1300px] my-5 mx-auto basis-1/4 justify-between">
-        {fetchImg?.data?.map((eleman, index) => {
-          return <Cards baseUrl={baseUrl} item={eleman} index={index} />;
+        {response?.products?.data?.map((eleman, index) => {
+          return <Cards key={index} item={eleman} index={index} />;
         })}
       </div>
     </div>
