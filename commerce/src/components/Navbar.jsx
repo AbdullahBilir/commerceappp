@@ -7,16 +7,16 @@ function Navbar() {
   return (
     <div className="flex justify-between items-center h-[80px] px-4 font-medium">
       <div className="left flex items-center gap-6 text-sm font-md ">
-        <div>
+        <div className=" hover:text-blue-500 transition-all duration-300">
           <Link to={""}>Men</Link>
         </div>
-        <div>
+        <div className=" hover:text-blue-500 transition-all duration-300">
           <Link to={""}>Women</Link>
         </div>
-        <div>
+        <div className=" hover:text-blue-500 transition-all duration-300">
           <Link to={""}>Children</Link>
         </div>
-        <div>
+        <div className=" hover:text-blue-500 transition-all duration-300">
           <Link to={""}>Accessories</Link>
         </div>
       </div>
@@ -26,23 +26,23 @@ function Navbar() {
       </div>
 
       <div className="rigth flex items-center gap-6 text-sm  ">
-        <div>
+        <div className=" hover:text-blue-500 transition-all duration-300">
           <Link to={""}>HomePage</Link>
         </div>
-        <div>
+        <div className=" hover:text-blue-500 transition-all duration-300">
           <Link to={""}>About</Link>
         </div>
-        <div>
+        <div className=" hover:text-blue-500 transition-all duration-300">
           <Link to={""}>Contact</Link>
         </div>
-        <div>
+        <div className=" hover:text-blue-500 transition-all duration-300">
           <Link to={""}>Stores</Link>
         </div>
         <div className="İcons flex gap-3 ">
-          <CiSearch className="text-lg cursor-pointer " />
-          <CiUser className="text-lg cursor-pointer" />
-          <CiHeart className="text-lg cursor-pointer" />
-          <PiShoppingCartThin className="text-lg cursor-pointer" />
+          <CiSearch className="text-lg cursor-pointer hover:text-blue-500 transition-all duration-300 " />
+          <CiUser className="text-lg cursor-pointer hover:text-blue-500 transition-all duration-300" />
+          <CiHeart className="text-lg cursor-pointer hover:text-blue-500 transition-all duration-300" />
+          <PiShoppingCartThin className="text-lg cursor-pointer hover:text-blue-500 transition-all duration-300" />
         </div>
       </div>
     </div>

@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { fetchItems } from "../features/homeSlice";
 import Category from "../components/Category";
+import Slide from "../components/Slide";
 
 function Home() {
   const response = useSelector((state) => state.home);
@@ -157,8 +158,11 @@ function Home() {
           return <Cards key={index} item={eleman} index={index} />;
         })}
       </div>
-      <div className="my-40">
+      <div className="mt-20 mb-8">
         <Category />
+      </div>
+      <div className="">
+        <Slide />
       </div>
     </div>
   );

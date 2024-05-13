@@ -17,7 +17,7 @@ function Cards({ item, index }) {
         }}
       >
         <img
-          className="w-[275px] h-[400px]"
+          className="w-[270px] h-[400px]"
           src={
             baseUrl +
             item?.attributes?.image?.data[active ? 1 : 0]?.attributes?.formats

@@ -1,7 +1,6 @@
 import React from "react";
 
 function CategoryList({ item, baseUrl }) {
-  console.log(item);
   return (
     <div className="w-1/4 relative">
       <img
