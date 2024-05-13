@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import Home from "../pages/Home";
+import React, { useEffect, useState } from "react";
 
 function Cards({ item, index }) {
   const [active, setActive] = useState(true);
@@ -9,7 +8,7 @@ function Cards({ item, index }) {
   return (
     <div>
       <div
-        className="mr-4 my-5 cursor-pointer"
+        className="mr-4 my-5 cursor-pointer shadow-md"
         onMouseEnter={() => {
           setActive(true);
         }}
@@ -18,7 +17,7 @@ function Cards({ item, index }) {
         }}
       >
         <img
-          className="w-[300px] h-[450px]"
+          className="w-[275px] h-[400px]"
           src={
             baseUrl +
             item?.attributes?.image?.data[active ? 1 : 0]?.attributes?.formats

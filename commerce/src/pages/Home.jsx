@@ -10,6 +10,7 @@ import Cards from "../components/Cards";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { fetchItems } from "../features/homeSlice";
+import Category from "../components/Category";
 
 function Home() {
   const response = useSelector((state) => state.home);
@@ -129,22 +130,35 @@ function Home() {
         </div>
       </Slider>
       <div className="absolute top-1/2 right-4 z-10 mb-20 ">
-        <button className="text-white mr-4" onClick={handlePrevSlide}>
+        <button className="text-white mr-4" onClick={handleNextSlide}>
           <GoChevronRight className="size-8 text-white  ml-4 " />
         </button>
       </div>
       <div className="absolute top-1/2 left-4 z-10 mb-20 ">
-        <button className="text-white" onClick={handleNextSlide}>
+        <button className="text-white" onClick={handlePrevSlide}>
           <GoChevronLeft className=" size-8 " />
         </button>
       </div>
-      <div className="w-[300px] mx-auto mt-20 justify-center">
-        <h1 className="text-4xl  ">Featured Products</h1>
+      <div className=" w-[1500px] mx-auto my-16 flex  px-4 basis-1/2 items-center ">
+        <h1 className="text-2xl font-semibold w-1/4 text-gray-700">
+          Featured Products
+        </h1>
+        <p className=" w-3/4 text-sm text-gray-400 px-8 leading-6 tracking-wider">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, vel! Quam
+          quod officiis distinctio eius quo laudantium molestias laboriosam non
+          voluptate odit, optio sit quae cumque vero possimus dolorum pariatur
+          veritatis suscipit unde explicabo ducimus fugiat animi amet
+          accusantium. Molestiae, sapiente non? Saepe non dolorem labore odio
+          laborum consectetur repellat.
+        </p>
       </div>
-      <div className="flex  w-[1300px] my-5 mx-auto basis-1/4 justify-between">
+      <div className="flex  w-[1300px] mb-5 mx-auto basis-1/4 justify-around">
         {response?.products?.data?.map((eleman, index) => {
           return <Cards key={index} item={eleman} index={index} />;
         })}
+      </div>
+      <div className="my-40">
+        <Category />
       </div>
     </div>
   );

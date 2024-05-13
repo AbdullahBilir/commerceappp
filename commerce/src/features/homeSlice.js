@@ -4,7 +4,7 @@ const initialState = {
   loading: false,
   error: null,
   products: [],
-  baseUrl: "http://localhost:1337",
+  categories: [],
 };
 
 export const fetchItems = createAsyncThunk("fetchItems", async () => {
@@ -13,12 +13,20 @@ export const fetchItems = createAsyncThunk("fetchItems", async () => {
   return res;
 });
 
+export const fetchCategory = createAsyncThunk("fetchCategory", async () => {
+  const category = await fetch(
+    "http://localhost:1337/api/categories?populate=*"
+  );
+  const categoryJson = await category.json();
+  return categoryJson;
+});
+
 export const homeSlice = createSlice({
   name: "home",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchItems.pending, (state, action) => {
+    builder.addCase(fetchItems.pending, (state) => {
       state.loading = true;
       state.error = "";
     });
@@ -26,7 +34,20 @@ export const homeSlice = createSlice({
       state.products = action.payload;
       state.loading = false;
     });
-    builder.addCase(fetchItems.rejected, (state, action) => {
+    builder.addCase(fetchItems.rejected, (state) => {
+      state.loading = false;
+      state.error = "fetch işlemi yapılır ken hata oluştu";
+    });
+
+    builder.addCase(fetchCategory.pending, (state) => {
+      state.loading = true;
+      state.error = "";
+    });
+    builder.addCase(fetchCategory.fulfilled, (state, action) => {
+      state.categories = action.payload;
+      state.loading = false;
+    });
+    builder.addCase(fetchCategory.rejected, (state) => {
       state.loading = false;
       state.error = "fetch işlemi yapılır ken hata oluştu";
     });
