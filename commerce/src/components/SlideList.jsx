@@ -16,7 +16,7 @@ function SlideList({ item }) {
       }}
     >
       <img
-        className="w-[270px] h-[400px]"
+        className="w-[270px] h-[400px] shadow-md "
         src={
           baseUrl +
           item.attributes.img.data[active ? 1 : 0].attributes.formats.small.url

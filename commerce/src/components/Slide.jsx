@@ -15,7 +15,7 @@ function Slide() {
     <div>
       <div className=" w-[1500px] mx-auto my-16 flex  px-4 basis-1/2 items-center ">
         <h1 className="text-2xl font-semibold w-1/4 text-gray-700">
-          Featured Products
+          Best Sellers
         </h1>
         <p className=" w-3/4 text-sm text-gray-400 px-8 leading-6 tracking-wider">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, vel! Quam
@@ -28,7 +28,7 @@ function Slide() {
       </div>
       <div className="flex w-[1300px] mx-auto gap-5 my-4 ">
         {data?.card?.data?.map((item, index) => {
-          return <SlideList item={item} />;
+          return <SlideList key={index} item={item} />;
         })}
       </div>
     </div>

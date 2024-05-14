@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -17,9 +17,34 @@ function Home() {
   const response = useSelector((state) => state.home);
   const dispatch = useDispatch();
 
+  const [show, setShow] = useState(false);
+
   useEffect(() => {
     dispatch(fetchItems());
   }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 1024) {
+        setShow(true);
+      } else {
+        setShow(false);
+      }
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const desc = [
+    "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dictaatque dolor veniam quaerat natus eum praesentium illo accusamussaepe sint quo dolorum repudiandae tempora quibusdam soluta distinctio harum voluptates voluptas, inventore magni? Corrupti quos in, laudantium rerum nisi illum eius!",
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, vel! Quamquod officiis distinctio eius quo laudantium molestias laboriosam nonvoluptate odit, optio sit quae cumque vero possimus dolorum pariaturveritatis suscipit unde explicabo ducimus fugiat animi ametaccusantium. Molestiae, sapiente non? Saepe non dolorem labore odiolaborum consectetur repellat.",
+  ];
 
   const settings = {
     dots: false,
@@ -46,10 +71,10 @@ function Home() {
   };
 
   return (
-    <div style={{ width: "100vw" }} className="justify-center items-center ">
+    <div style={{ width: "100vw" }} className="justify-center items-center">
       <Slider
         ref={sliderRef}
-        className=" w-screen relative"
+        className=" w-screen relative max-lg:absolute"
         {...settings}
         style={{ height: "calc(100vh - 80px)" }}
       >
@@ -65,15 +90,11 @@ function Home() {
               alt="Resim 1"
             />
             <div className="absolute top-1/3 left-1/2 w-1/3    ">
-              <h2 className="text-6xl font-bold text-white">
+              <h2 className="text-6xl font-bold text-white  max-lg:text-2xl max-xl:text-4xl max-md:text-xl">
                 Excolive Collection
               </h2>
-              <p className="text-gray-400 my-4 ">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta
-                atque dolor veniam quaerat natus eum praesentium illo accusamus
-                saepe sint quo dolorum repudiandae tempora quibusdam soluta
-                distinctio harum voluptates voluptas, inventore magni? Corrupti
-                quos in, laudantium rerum nisi illum eius!
+              <p className="text-gray-400 my-4 max-lg:text-sm ">
+                {show ? desc[0].substring(0, 100) : desc}...
               </p>
               <button className="text-white px-4 py-2 border mt-4 hover:bg-blue-500 transition-all duration-500">
                 For Details
@@ -90,15 +111,11 @@ function Home() {
               alt="Resim 2"
             />
             <div className="absolute top-1/3 left-1/2 w-1/3   ">
-              <h2 className="text-6xl font-bold text-white">
+              <h2 className="text-6xl font-bold text-white  max-lg:text-2xl max-xl:text-4xl max-md:text-xl">
                 New Season Coats
               </h2>
               <p className="text-gray-400 my-4">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta
-                atque dolor veniam quaerat natus eum praesentium illo accusamus
-                saepe sint quo dolorum repudiandae tempora quibusdam soluta
-                distinctio harum voluptates voluptas, inventore magni? Corrupti
-                quos in, laudantium rerum nisi illum eius!
+                {show ? desc[0].substring(0, 100) : desc}...
               </p>
               <button className="text-white px-4 py-2 border mt-4 hover:bg-blue-500 transition-all duration-500">
                 For Details
@@ -115,13 +132,11 @@ function Home() {
               alt="Resim 3"
             />
             <div className="absolute top-1/3 left-1/2 w-1/3   ">
-              <h2 className="text-6xl font-bold text-white">Bag Collection </h2>
+              <h2 className="text-6xl font-bold text-white  max-lg:text-2xl max-xl:text-4xl max-md:text-xl">
+                Bag Collection{" "}
+              </h2>
               <p className="text-gray-400 my-4">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta
-                atque dolor veniam quaerat natus eum praesentium illo accusamus
-                saepe sint quo dolorum repudiandae tempora quibusdam soluta
-                distinctio harum voluptates voluptas, inventore magni? Corrupti
-                quos in, laudantium rerum nisi illum eius!
+                {show ? desc[0].substring(0, 100) : desc}...
               </p>
               <button className="text-white px-4 py-2 border mt-4 hover:bg-blue-500 transition-all duration-500">
                 For Details
@@ -140,22 +155,19 @@ function Home() {
           <GoChevronLeft className=" size-8 " />
         </button>
       </div>
-      <div className=" w-[1500px] mx-auto my-16 flex  px-4 basis-1/2 items-center ">
+      <div className=" container  mx-auto my-16 flex  px-4 basis-1/2 items-center ">
         <h1 className="text-2xl font-semibold w-1/4 text-gray-700">
           Featured Products
         </h1>
         <p className=" w-3/4 text-sm text-gray-400 px-8 leading-6 tracking-wider">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, vel! Quam
-          quod officiis distinctio eius quo laudantium molestias laboriosam non
-          voluptate odit, optio sit quae cumque vero possimus dolorum pariatur
-          veritatis suscipit unde explicabo ducimus fugiat animi amet
-          accusantium. Molestiae, sapiente non? Saepe non dolorem labore odio
-          laborum consectetur repellat.
+          {show ? desc[1].substring(0, 150) : desc[1]}
         </p>
       </div>
-      <div className="flex  w-[1300px] mb-5 mx-auto basis-1/4 justify-around">
+      <div className="flex container mb-5 mx-auto basis-1/4 flex-wrap  justify-around ">
         {response?.products?.data?.map((eleman, index) => {
-          return <Cards key={index} item={eleman} index={index} />;
+          return (
+            <Cards className="w-1/2" key={index} item={eleman} index={index} />
+          );
         })}
       </div>
       <div className="mt-20 mb-8">

@@ -16,7 +16,7 @@ function Category() {
 
   return (
     <div className="mt-4">
-      <div className="flex  mx-auto ">
+      <div className="flex flex-wrap">
         {data?.categories?.data?.map((item, index) => {
           return <CategoryList key={index} item={item} baseUrl={baseUrl} />;
         })}
