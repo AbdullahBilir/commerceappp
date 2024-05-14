@@ -25,7 +25,7 @@ function Home() {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 1024) {
+      if (window.innerWidth < 1280) {
         setShow(true);
       } else {
         setShow(false);
@@ -94,7 +94,7 @@ function Home() {
                 Excolive Collection
               </h2>
               <p className="text-gray-400 my-4 max-lg:text-sm ">
-                {show ? desc[0].substring(0, 100) : desc}...
+                {show ? desc[0].substring(0, 100) : desc[0]}...
               </p>
               <button className="text-white px-4 py-2 border mt-4 hover:bg-blue-500 transition-all duration-500">
                 For Details
@@ -105,7 +105,7 @@ function Home() {
         <div className="w-screen " style={{ height: "calc(100vh - 80px)" }}>
           <div className="w-full h-full relative">
             <img
-              className="w-full object-cover"
+              className="w-full object-cover "
               style={{ height: "calc(100vh - 80px)" }}
               src={img1}
               alt="Resim 2"
@@ -115,7 +115,7 @@ function Home() {
                 New Season Coats
               </h2>
               <p className="text-gray-400 my-4">
-                {show ? desc[0].substring(0, 100) : desc}...
+                {show ? desc[0].substring(0, 100) : desc[0]}...
               </p>
               <button className="text-white px-4 py-2 border mt-4 hover:bg-blue-500 transition-all duration-500">
                 For Details
@@ -136,7 +136,7 @@ function Home() {
                 Bag Collection{" "}
               </h2>
               <p className="text-gray-400 my-4">
-                {show ? desc[0].substring(0, 100) : desc}...
+                {show ? desc[0].substring(0, 100) : desc[0]}...
               </p>
               <button className="text-white px-4 py-2 border mt-4 hover:bg-blue-500 transition-all duration-500">
                 For Details
@@ -174,7 +174,7 @@ function Home() {
         <Category />
       </div>
       <div className="">
-        <Slide />
+        <Slide desc={desc} show={show} setShow={setShow} />
       </div>
     </div>
   );
