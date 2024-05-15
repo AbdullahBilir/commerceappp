@@ -14,16 +14,16 @@ function Navbar() {
           show ? "" : "hidden"
         }`}
       >
-        <div className=" hover:text-blue-500 transition-all duration-300 pb-2">
+        <div className=" hover:text-blue-500 transition-all duration-300 max-lg:pb-2">
           <Link to={""}>Men</Link>
         </div>
-        <div className=" hover:text-blue-500 transition-all duration-300 pb-2">
+        <div className=" hover:text-blue-500 transition-all duration-300 max-lg:pb-2">
           <Link to={""}>Women</Link>
         </div>
-        <div className=" hover:text-blue-500 transition-all duration-300 pb-2">
+        <div className=" hover:text-blue-500 transition-all duration-300 max-lg:pb-2">
           <Link to={""}>Children</Link>
         </div>
-        <div className=" hover:text-blue-500 transition-all duration-300 pb-2">
+        <div className=" hover:text-blue-500 transition-all duration-300 max-lg:pb-2">
           <Link to={""}>Accessories</Link>
         </div>
       </div>
@@ -37,16 +37,16 @@ function Navbar() {
             show ? "" : "hidden"
           }`}
         >
-          <div className=" hover:text-blue-500 transition-all duration-300 pb-2 pt-1">
+          <div className=" hover:text-blue-500 transition-all duration-300 max-lg:pb-2 ">
             <Link to={""}>HomePage</Link>
           </div>
-          <div className=" hover:text-blue-500 transition-all duration-300 pb-2">
+          <div className=" hover:text-blue-500 transition-all duration-300 max-lg:pb-2">
             <Link to={""}>About</Link>
           </div>
-          <div className=" hover:text-blue-500 transition-all duration-300 pb-2">
+          <div className=" hover:text-blue-500 transition-all duration-300 max-lg:pb-2">
             <Link to={""}>Contact</Link>
           </div>
-          <div className=" hover:text-blue-500 transition-all duration-300 pb-2">
+          <div className=" hover:text-blue-500 transition-all duration-300 max-lg:pb-2">
             <Link to={""}>Stores</Link>
           </div>
         </div>

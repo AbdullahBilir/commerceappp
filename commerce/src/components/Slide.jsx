@@ -39,9 +39,9 @@ function Slide({ setShow, show, desc }) {
           {show ? desc[1].substring(0, 150) : desc[1]}
         </p>
       </div>
-      <div className="flex w-[1300px] mx-auto gap-5 my-4 ">
+      <div className="flex container mb-5 mx-auto basis-1/4 flex-wrap  justify-around">
         {data?.card?.data?.map((item, index) => {
-          return <SlideList key={index} item={item} />;
+          return <SlideList className="w-1/2" key={index} item={item} />;
         })}
       </div>
     </div>

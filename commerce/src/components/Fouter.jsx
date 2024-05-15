@@ -7,7 +7,7 @@ function Fouter() {
   return (
     <div>
       <div className="bg-blue-500 mt-8  py-3 text-white">
-        <div className="w-[1000px]  mx-auto flex justify-between items-center">
+        <div className="container  mx-auto flex flex-wrap justify-between items-center">
           <div className="text-sm">BE IN TOUCH WİTH US</div>
           <div className="flex items-center">
             <input

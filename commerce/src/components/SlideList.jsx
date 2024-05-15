@@ -7,7 +7,7 @@ function SlideList({ item }) {
 
   return (
     <div
-      className="w-1/4"
+      className=""
       onMouseEnter={() => {
         setActive(true);
       }}

@@ -16,8 +16,8 @@ function FouterMain() {
 
   return (
     <div className="bg-slate-200 py-16  ">
-      <div className="container mx-auto flex basis-1/4">
-        <div className="w-full">
+      <div className="container mx-auto flex flex-wrap ">
+        <div className="w-1/4 max-md:w-1/2 flex px-6 ">
           <ul>
             <h1 className=" text-lg mb-1">Category</h1>
             {data?.categories?.data?.map((eleman, index) => {
@@ -34,7 +34,7 @@ function FouterMain() {
             })}
           </ul>
         </div>
-        <div className="w-full text-sm capitalize text-gray-500">
+        <div className="w-1/4 max-md:w-1/2  px-6   text-sm capitalize text-gray-500">
           <ul>
             <h1 className="mb-1 text-lg text-black">Links</h1>
             <li className="mb-1 cursor-pointer hover:underline">Faq</li>
@@ -43,7 +43,7 @@ function FouterMain() {
             <li className="cursor-pointer hover:underline">Compare</li>
           </ul>
         </div>
-        <div className="px-6">
+        <div className="w-1/4 max-md:w-1/2  px-6 ">
           <h1 className="mb-1">About</h1>
           <p className="text-gray-500 text-sm">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
@@ -52,7 +52,7 @@ function FouterMain() {
             Natus, voluptas beatae?
           </p>
         </div>
-        <div className=" px-6">
+        <div className="w-1/4 max-md:w-1/2 px-6  ">
           <h1 className="mb-1">Contact</h1>
           <p className="text-gray-500 text-sm">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos
