@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCards } from "../features/homeSlice";
+import { fetchCards, filterItems } from "../features/homeSlice";
 import SlideList from "./SlideList";
 
 function Slide({ setShow, show, desc }) {
@@ -29,6 +29,12 @@ function Slide({ setShow, show, desc }) {
     };
   }, []);
 
+  const filterEleman = data?.products?.data?.filter(
+    (eleman) => eleman?.attributes?.slide === "slideOne"
+  );
+
+  console.log(filterEleman);
+
   return (
     <div>
       <div className=" container mx-auto my-16 flex  px-4 basis-1/2 items-center ">
@@ -40,7 +46,7 @@ function Slide({ setShow, show, desc }) {
         </p>
       </div>
       <div className="flex container mb-5 mx-auto basis-1/4 flex-wrap  justify-around">
-        {data?.card?.data?.map((item, index) => {
+        {filterEleman?.map((item, index) => {
           return <SlideList className="w-1/2" key={index} item={item} />;
         })}
       </div>

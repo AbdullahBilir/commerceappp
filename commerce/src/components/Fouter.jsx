@@ -11,7 +11,7 @@ function Fouter() {
           <div className="text-sm">BE IN TOUCH WİTH US</div>
           <div className="flex items-center">
             <input
-              className="px-2 py-1 rounded-sm"
+              className="px-2 py-1 rounded-sm text-gray-700"
               type="email"
               placeholder="Enter your Email"
             />

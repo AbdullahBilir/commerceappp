@@ -7,7 +7,7 @@ function SlideList({ item }) {
 
   return (
     <div
-      className=""
+      className="my-4"
       onMouseEnter={() => {
         setActive(true);
       }}
@@ -19,11 +19,12 @@ function SlideList({ item }) {
         className="w-[270px] h-[400px] shadow-md "
         src={
           baseUrl +
-          item.attributes.img.data[active ? 1 : 0].attributes.formats.small.url
+          item?.attributes?.image?.data[active ? 1 : 0]?.attributes?.formats
+            ?.small?.url
         }
       />
-      <p className="mt-3">{item.attributes.title}</p>
-      <p className="text-sm font-bold mt-2">{item.attributes.price} TL</p>
+      <p className="mt-3">{item?.attributes?.title}</p>
+      <p className="text-sm font-bold mt-2">{item?.attributes?.Pirice} TL</p>
     </div>
   );
 }

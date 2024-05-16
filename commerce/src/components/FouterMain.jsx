@@ -6,10 +6,6 @@ function FouterMain() {
   const data = useSelector((state) => state.home);
   const dispatch = useDispatch();
 
-  data?.categories?.data?.map((eleman) => {
-    console.log(eleman.attributes.title);
-  });
-
   useEffect(() => {
     dispatch(fetchCategory);
   }, []);

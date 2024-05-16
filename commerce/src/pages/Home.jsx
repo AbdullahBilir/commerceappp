@@ -9,7 +9,7 @@ import { GoChevronRight, GoChevronLeft } from "react-icons/go";
 import Cards from "../components/Cards";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { fetchItems } from "../features/homeSlice";
+import { fetchItems, filterItems } from "../features/homeSlice";
 import Category from "../components/Category";
 import Slide from "../components/Slide";
 
@@ -21,7 +21,7 @@ function Home() {
 
   useEffect(() => {
     dispatch(fetchItems());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -70,21 +70,24 @@ function Home() {
     }
   };
 
+  const filterEleman = response?.products?.data?.filter(
+    (eleman) => eleman.attributes.slide === "slide"
+  );
+
   return (
-    <div style={{ width: "100vw" }} className="justify-center items-center">
+    <div className="justify-center items-center">
       <Slider
         ref={sliderRef}
-        className=" w-screen relative max-lg:absolute"
+        className=" w-screen relative max-lg:absolute "
         {...settings}
-        style={{ height: "calc(100vh - 80px)" }}
       >
-        <div className="w-screen h-screen">
+        <div className="w-screen h-screen ">
           <div
-            className="w-full  relative"
+            className="w-full  relative max-md:h-3/4"
             style={{ height: "calc(100vh - 80px)" }}
           >
             <img
-              className="w-full  object-cover"
+              className="w-full  object-cover max-md:h-3/4"
               style={{ height: "calc(100vh - 80px)" }}
               src={img}
               alt="Resim 1"
@@ -164,7 +167,7 @@ function Home() {
         </p>
       </div>
       <div className="flex container mb-5 mx-auto basis-1/4 flex-wrap  justify-around ">
-        {response?.products?.data?.map((eleman, index) => {
+        {filterEleman?.map((eleman, index) => {
           return (
             <Cards className="w-1/2" key={index} item={eleman} index={index} />
           );

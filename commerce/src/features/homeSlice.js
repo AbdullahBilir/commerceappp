@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import slider from "react-slick/lib/slider";
 
 const initialState = {
   loading: false,
@@ -31,7 +32,9 @@ export const fetchCategory = createAsyncThunk("fetchCategory", async () => {
 export const homeSlice = createSlice({
   name: "home",
   initialState,
-  reducers: {},
+  reducers: {
+    filterItems: (state, action) => {},
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchItems.pending, (state) => {
       state.loading = true;
@@ -39,6 +42,7 @@ export const homeSlice = createSlice({
     });
     builder.addCase(fetchItems.fulfilled, (state, action) => {
       state.products = action.payload;
+
       state.loading = false;
     });
     builder.addCase(fetchItems.rejected, (state) => {
@@ -73,5 +77,7 @@ export const homeSlice = createSlice({
     });
   },
 });
+
+export const { filterItems } = homeSlice.actions;
 
 export default homeSlice.reducer;
