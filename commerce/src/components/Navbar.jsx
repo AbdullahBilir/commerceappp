@@ -47,7 +47,7 @@ function Navbar() {
             <Link to={""}>Contact</Link>
           </div>
           <div className=" hover:text-blue-500 transition-all duration-300 max-lg:pb-2">
-            <Link to={""}>Stores</Link>
+            <Link to={"/product"}>Stores</Link>
           </div>
         </div>
         <div className="İcons flex gap-3 items-center ">
