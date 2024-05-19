@@ -16,11 +16,16 @@ function Product() {
 
   return (
     <div className="flex  ">
-      <div className="w-1/3">
-        <ProductsCategory />
+      <div className="w-1/4 ">
+        <ProductsCategory data={data} />;
       </div>
-      <div className=" w-3/4  max-md:w-full  flex flex-wrap   ">
-        <div></div>
+      <div className=" w-3/4  max-md:w-full  flex flex-wrap  px-12 ">
+        <div className=" w-full flex justify-end px-20 ">
+          <select>
+            <option>Artan</option>
+            <option>Azalan</option>
+          </select>
+        </div>
         {data?.products?.data?.map((eleman, index) => {
           return <ProductsList baseUrl={baseUrl} key={index} eleman={eleman} />;
         })}

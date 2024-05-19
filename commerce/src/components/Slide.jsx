@@ -1,15 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCards, filterItems } from "../features/homeSlice";
+import { filterItems } from "../features/homeSlice";
 import SlideList from "./SlideList";
 
 function Slide({ setShow, show, desc }) {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.home);
-
-  useEffect(() => {
-    dispatch(fetchCards());
-  }, []);
 
   useEffect(() => {
     const handleResize = () => {
