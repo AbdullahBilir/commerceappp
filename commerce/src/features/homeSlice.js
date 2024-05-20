@@ -6,16 +6,31 @@ const initialState = {
   error: null,
   products: [],
   categories: [],
-  card: ["Etek", "Sweatshirt"],
+  card: [],
+  ProductsCategory: ["Sweatshirt", "Gömlek", "Ceket", "Etek"],
 };
 
 export const fetchItems = createAsyncThunk("fetchItems", async () => {
-  const response = await fetch(
-    `http://localhost:1337/api/products?populate=*&[filters][category][$in]=Etek,Sweatshirt`
-  );
+  const response = await fetch(`http://localhost:1337/api/products?populate=*`);
   const res = await response.json();
   return res;
 });
+
+export const filterCategory = createAsyncThunk(
+  "filterCategory",
+  async (ans, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const cardItem = state.home.card.map(
+      (eleman) => `&[filters][category][$eq]=${eleman}`
+    );
+    const queryParams = cardItem.join("&");
+    const response = await fetch(
+      `http://localhost:1337/api/products?populate=*&${queryParams}`
+    );
+    const res = await response.json();
+    return res;
+  }
+);
 
 export const fetchCategory = createAsyncThunk("fetchCategory", async () => {
   const category = await fetch(
@@ -29,7 +44,12 @@ export const homeSlice = createSlice({
   name: "home",
   initialState,
   reducers: {
-    filterItems: (state, action) => {},
+    filterItems: (state, action) => {
+      state.card.push(action.payload.item);
+    },
+    removeİtems: (state, action) => {
+      state.card = state.card.filter((item) => item !== action.payload.item);
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchItems.pending, (state) => {
@@ -58,9 +78,21 @@ export const homeSlice = createSlice({
       state.loading = false;
       state.error = "fetch işlemi yapılır ken hata oluştu";
     });
+    builder.addCase(filterCategory.pending, (state) => {
+      state.loading = true;
+      state.error = "";
+    });
+    builder.addCase(filterCategory.fulfilled, (state, action) => {
+      state.products = action.payload;
+      state.loading = false;
+    });
+    builder.addCase(filterCategory.rejected, (state) => {
+      state.loading = false;
+      state.error = "fetch işlemi yapılır ken hata oluştu";
+    });
   },
 });
 
-export const { filterItems } = homeSlice.actions;
+export const { filterItems, removeİtems } = homeSlice.actions;
 
 export default homeSlice.reducer;
