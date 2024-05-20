@@ -7,7 +7,7 @@ const initialState = {
   products: [],
   categories: [],
   card: [],
-  ProductsCategory: ["Sweatshirt", "Gömlek", "Ceket", "Etek"],
+  ProductsCategory: ["Sweatshirt", "Gömlek", "Ceket", "Etek", "Çocuk"],
 };
 
 export const fetchItems = createAsyncThunk("fetchItems", async () => {
@@ -18,10 +18,10 @@ export const fetchItems = createAsyncThunk("fetchItems", async () => {
 
 export const filterCategory = createAsyncThunk(
   "filterCategory",
-  async (ans, thunkAPI) => {
+  async (def, thunkAPI) => {
     const state = thunkAPI.getState();
     const cardItem = state.home.card.map(
-      (eleman) => `&[filters][category][$eq]=${eleman}`
+      (eleman) => `[filters][category][$eq]=${eleman}`
     );
     const queryParams = cardItem.join("&");
     const response = await fetch(
