@@ -1,8 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { filterItems, removeİtems } from "../features/homeSlice";
+import {
+  filterCategory,
+  filterItems,
+  filterPrice,
+  removeİtems,
+} from "../features/homeSlice";
 
 function ProductsCategory() {
+  const [value, setvalue] = useState(0);
+
   const data = useSelector((state) => state.home);
 
   const dispatch = useDispatch();
@@ -13,6 +20,13 @@ function ProductsCategory() {
     } else {
       dispatch(removeİtems({ item }));
     }
+  };
+
+  const handlefilter = (e) => {
+    const newValue = e.target.value;
+    setvalue(newValue);
+    dispatch(filterPrice({ value: newValue }));
+    dispatch(filterCategory());
   };
 
   return (
@@ -26,6 +40,19 @@ function ProductsCategory() {
           </div>
         );
       })}
+
+      <div className="my-6">
+        <input
+          className=""
+          type="range"
+          min={0}
+          max={1600}
+          step={50}
+          value={value}
+          onChange={(e) => handlefilter(e)}
+        />
+        <output className="ml-2">{value}</output>
+      </div>
     </div>
   );
 }

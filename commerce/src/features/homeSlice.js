@@ -7,6 +7,7 @@ const initialState = {
   products: [],
   categories: [],
   card: [],
+  number: [],
   ProductsCategory: ["Sweatshirt", "Gömlek", "Ceket", "Etek", "Çocuk"],
 };
 
@@ -20,12 +21,18 @@ export const filterCategory = createAsyncThunk(
   "filterCategory",
   async (def, thunkAPI) => {
     const state = thunkAPI.getState();
-    const cardItem = state.home.card.map(
-      (eleman) => `[filters][category][$eq]=${eleman}`
-    );
-    const queryParams = cardItem.join("&");
+    let queryParams = "";
+    if (state.home.card.length > 0) {
+      const cardItem = state.home.card.map(
+        (eleman) => `&[filters][category][$eq]=${eleman}`
+      );
+      queryParams = cardItem.join("&");
+    }
+    if (state.home.number.length > 0) {
+      queryParams += `&[filters][Pirice][$lte]=${state.home.number}`;
+    }
     const response = await fetch(
-      `http://localhost:1337/api/products?populate=*&${queryParams}`
+      `http://localhost:1337/api/products?populate=*${queryParams}`
     );
     const res = await response.json();
     return res;
@@ -50,6 +57,9 @@ export const homeSlice = createSlice({
     removeİtems: (state, action) => {
       state.card = state.card.filter((item) => item !== action.payload.item);
     },
+    filterPrice: (state, action) => {
+      state.number = action.payload.value;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchItems.pending, (state) => {
@@ -60,6 +70,7 @@ export const homeSlice = createSlice({
       state.products = action.payload;
 
       state.loading = false;
+      console.log(state.products);
     });
     builder.addCase(fetchItems.rejected, (state) => {
       state.loading = false;
@@ -93,6 +104,6 @@ export const homeSlice = createSlice({
   },
 });
 
-export const { filterItems, removeİtems } = homeSlice.actions;
+export const { filterItems, removeİtems, filterPrice } = homeSlice.actions;
 
 export default homeSlice.reducer;
