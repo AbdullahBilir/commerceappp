@@ -29,8 +29,6 @@ function Slide({ setShow, show, desc }) {
     (eleman) => eleman?.attributes?.slide === "slideOne"
   );
 
-  console.log(filterEleman);
-
   return (
     <div>
       <div className=" container mx-auto my-16 flex  px-4 basis-1/2 items-center ">

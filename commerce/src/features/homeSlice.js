@@ -68,9 +68,7 @@ export const homeSlice = createSlice({
     });
     builder.addCase(fetchItems.fulfilled, (state, action) => {
       state.products = action.payload;
-
       state.loading = false;
-      console.log(state.products);
     });
     builder.addCase(fetchItems.rejected, (state) => {
       state.loading = false;
