@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+
 import slider from "react-slick/lib/slider";
 
 const initialState = {
@@ -8,6 +9,7 @@ const initialState = {
   categories: [],
   card: [],
   number: [],
+  click: [],
   ProductsCategory: ["Sweatshirt", "Gömlek", "Ceket", "Etek", "Çocuk"],
 };
 
@@ -19,18 +21,24 @@ export const fetchItems = createAsyncThunk("fetchItems", async () => {
 
 export const filterCategory = createAsyncThunk(
   "filterCategory",
-  async (def, thunkAPI) => {
+  async (item, thunkAPI) => {
     const state = thunkAPI.getState();
     let queryParams = "";
+
     if (state.home.card.length > 0) {
       const cardItem = state.home.card.map(
         (eleman) => `&[filters][category][$eq]=${eleman}`
       );
-      queryParams = cardItem.join("&");
+      queryParams += cardItem.join("&");
     }
+    if (state.home.click) {
+      queryParams += `&[filters][subCategory][$eq]=${state.home.click}`;
+    }
+
     if (state.home.number.length > 0) {
       queryParams += `&[filters][Pirice][$lte]=${state.home.number}`;
     }
+
     const response = await fetch(
       `http://localhost:1337/api/products?populate=*${queryParams}`
     );
@@ -59,6 +67,9 @@ export const homeSlice = createSlice({
     },
     filterPrice: (state, action) => {
       state.number = action.payload.value;
+    },
+    isClick: (state, action) => {
+      state.click = [action.payload.click];
     },
   },
   extraReducers: (builder) => {
@@ -102,6 +113,7 @@ export const homeSlice = createSlice({
   },
 });
 
-export const { filterItems, removeİtems, filterPrice } = homeSlice.actions;
+export const { filterItems, removeİtems, filterPrice, isClick } =
+  homeSlice.actions;
 
 export default homeSlice.reducer;
