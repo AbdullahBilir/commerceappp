@@ -15,7 +15,6 @@ function Navbar() {
   const dispacth = useDispatch();
 
   const handleClick = (eleman) => {
-    setClick(eleman);
     dispacth(isClick({ click: eleman }));
     dispacth(filterCategory());
   };
@@ -23,12 +22,13 @@ function Navbar() {
   useEffect(() => {
     if (data.click) {
       const eleman = data.click;
-      dispacth(filterCategory({ eleman }));
+      dispacth(filterCategory({ eleman: eleman }));
     }
-  }, [data.click, check]);
+  }, [data.click]);
 
   useEffect(() => {
     dispacth(isClick({ click }));
+    dispacth(filterCategory());
   }, [click]);
 
   return (

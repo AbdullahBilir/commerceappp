@@ -9,7 +9,7 @@ import { GoChevronRight, GoChevronLeft } from "react-icons/go";
 import Cards from "../components/Cards";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { fetchItems, filterItems } from "../features/homeSlice";
+import { fetchItems, filterCategory, filterItems } from "../features/homeSlice";
 import Category from "../components/Category";
 import Slide from "../components/Slide";
 

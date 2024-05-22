@@ -9,7 +9,7 @@ const initialState = {
   categories: [],
   card: [],
   number: [],
-  click: [],
+  click: null,
   ProductsCategory: ["Sweatshirt", "Gömlek", "Ceket", "Etek", "Çocuk"],
 };
 
@@ -31,12 +31,14 @@ export const filterCategory = createAsyncThunk(
       );
       queryParams += cardItem.join("&");
     }
-    if (state.home.click) {
-      queryParams += `&[filters][subCategory][$eq]=${state.home.click}`;
-    }
 
     if (state.home.number.length > 0) {
       queryParams += `&[filters][Pirice][$lte]=${state.home.number}`;
+    }
+    if (state.home.click) {
+      queryParams += `&[filters][subCategory][$eq]=${state.home.click}`;
+      console.log(queryParams);
+      console.log(state.home.click);
     }
 
     const response = await fetch(
@@ -69,7 +71,7 @@ export const homeSlice = createSlice({
       state.number = action.payload.value;
     },
     isClick: (state, action) => {
-      state.click = [action.payload.click];
+      state.click = action.payload.click;
     },
   },
   extraReducers: (builder) => {
