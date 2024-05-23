@@ -52,7 +52,9 @@ function Navbar() {
       </div>
 
       <div className="text-2xl  ">
-        <Link to={"/"}>E-commerce</Link>
+        <Link to={"/"} onClick={() => handleClick(null)}>
+          E-commerce
+        </Link>
       </div>
       <div className="flex gap-6 ">
         <div

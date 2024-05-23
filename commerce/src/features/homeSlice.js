@@ -10,7 +10,14 @@ const initialState = {
   card: [],
   number: [],
   click: null,
-  ProductsCategory: ["Sweatshirt", "Gömlek", "Ceket", "Etek", "Çocuk"],
+  ProductsCategory: [
+    "Sweatshirt",
+    "Gömlek",
+    "Ceket",
+    "Etek",
+    "Çocuk",
+    "Tişört",
+  ],
 };
 
 export const fetchItems = createAsyncThunk("fetchItems", async () => {
@@ -37,8 +44,6 @@ export const filterCategory = createAsyncThunk(
     }
     if (state.home.click) {
       queryParams += `&[filters][subCategory][$eq]=${state.home.click}`;
-      console.log(queryParams);
-      console.log(state.home.click);
     }
 
     const response = await fetch(

@@ -12,7 +12,7 @@ function ProductsList({ eleman, baseUrl }) {
         onMouseLeave={() => {
           setActive(false);
         }}
-        className="w-[250px] h-[350px] max-md:w-[275px] max-md:h-[400px]"
+        className="w-[250px] h-[350px] max-md:w-[275px] max-md:h-[400px] cursor-pointer"
         src={
           baseUrl +
           eleman.attributes.image.data[active ? 1 : 0].attributes.formats.small
