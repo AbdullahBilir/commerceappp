@@ -23,7 +23,8 @@ function ProductsCategory() {
   };
 
   const handlefilter = (e) => {
-    const newValue = e.target.value;
+    const newValue = Number(e.target.value);
+
     setvalue(newValue);
     dispatch(filterPrice({ value: newValue }));
     dispatch(filterCategory());

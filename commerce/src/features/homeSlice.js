@@ -32,7 +32,7 @@ export const filterCategory = createAsyncThunk(
       queryParams += cardItem.join("&");
     }
 
-    if (state.home.number.length > 0) {
+    if (state.home.number > 0) {
       queryParams += `&[filters][Pirice][$lte]=${state.home.number}`;
     }
     if (state.home.click) {
