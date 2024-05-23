@@ -42,7 +42,9 @@ export const filterCategory = createAsyncThunk(
     }
 
     const response = await fetch(
-      `http://localhost:1337/api/products?populate=*${queryParams}`
+      `http://localhost:1337/api/products?populate=*${
+        queryParams ? queryParams : ""
+      }`
     );
     const res = await response.json();
     return res;

@@ -10,15 +10,13 @@ function Product() {
   const data = useSelector((state) => state.home);
   const dispatch = useDispatch();
 
-  const subItem = useSelector((state) => state.home);
-
   useEffect(() => {
-    if (subItem.card.length > 0) {
+    if (data.card.length > 0 || data.click) {
       dispatch(filterCategory());
     } else {
       dispatch(fetchItems());
     }
-  }, [subItem.card]);
+  }, [data.card, data.click, dispatch]);
 
   return (
     <div className="flex  ">

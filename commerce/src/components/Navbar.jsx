@@ -9,27 +9,20 @@ import { filterCategory, filterItems, isClick } from "../features/homeSlice";
 function Navbar() {
   const data = useSelector((state) => state.home);
   const [show, setShow] = useState(false);
-  const [check, setCheck] = useState(false);
-  const [click, setClick] = useState("");
+
+  const [click, setClick] = useState(null);
 
   const dispacth = useDispatch();
 
   const handleClick = (eleman) => {
     dispacth(isClick({ click: eleman }));
-    dispacth(filterCategory());
   };
 
   useEffect(() => {
     if (data.click) {
-      const eleman = data.click;
-      dispacth(filterCategory({ eleman: eleman }));
+      dispacth(filterCategory());
     }
-  }, [data.click]);
-
-  useEffect(() => {
-    dispacth(isClick({ click }));
-    dispacth(filterCategory());
-  }, [click]);
+  }, [data.click, dispacth]);
 
   return (
     <div className="flex  justify-between items-center h-20 max-lg:h-20 px-4 font-medium ">
