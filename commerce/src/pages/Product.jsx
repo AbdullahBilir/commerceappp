@@ -9,6 +9,7 @@ function Product() {
   );
 
   const [count, setCount] = useState(0);
+  const [active, setActive] = useState(0);
 
   const baseUrl = "http://localhost:1337";
 
@@ -18,18 +19,24 @@ function Product() {
         <div className="w-full flex">
           <div className="basis-1/4 px-6  ">
             <img
+              onMouseEnter={() => {
+                setActive(0);
+              }}
               className="h-[150px] w-full pl-6"
               src={
                 baseUrl +
-                data?.product?.attributes?.image?.data[0]?.attributes?.formats
+                data?.product?.attributes?.image?.data[1]?.attributes?.formats
                   ?.large?.url
               }
             />
             <img
+              onMouseEnter={() => {
+                setActive(1);
+              }}
               className="h-[150px] w-full my-4 pl-6"
               src={
                 baseUrl +
-                data?.product?.attributes?.image?.data[1]?.attributes?.formats
+                data?.product?.attributes?.image?.data[0]?.attributes?.formats
                   ?.large?.url
               }
             />
@@ -39,8 +46,8 @@ function Product() {
               className="w-full h-[800px] "
               src={
                 baseUrl +
-                data?.product?.attributes?.image?.data[0]?.attributes?.formats
-                  ?.large?.url
+                data?.product?.attributes?.image?.data[active]?.attributes
+                  ?.formats?.large?.url
               }
             />
           </div>
