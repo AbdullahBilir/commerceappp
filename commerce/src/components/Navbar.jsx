@@ -32,17 +32,17 @@ function Navbar() {
         }`}
       >
         <div className=" hover:text-blue-500 transition-all duration-300 max-lg:pb-2">
-          <Link to={"/product"} onClick={() => handleClick("man")}>
+          <Link to={"/products"} onClick={() => handleClick("man")}>
             Men
           </Link>
         </div>
         <div className=" hover:text-blue-500 transition-all duration-300 max-lg:pb-2">
-          <Link to={"/product"} onClick={() => handleClick("women")}>
+          <Link to={"/products"} onClick={() => handleClick("women")}>
             Women
           </Link>
         </div>
         <div className=" hover:text-blue-500 transition-all duration-300 max-lg:pb-2">
-          <Link to={"/product"} onClick={() => handleClick("children")}>
+          <Link to={"/products"} onClick={() => handleClick("children")}>
             Children
           </Link>
         </div>
@@ -69,10 +69,10 @@ function Navbar() {
             <Link to={""}>About</Link>
           </div>
           <div className=" hover:text-blue-500 transition-all duration-300 max-lg:pb-2">
-            <Link to={""}>Contact</Link>
+            <Link to={"/product"}>Contact</Link>
           </div>
           <div className=" hover:text-blue-500 transition-all duration-300 max-lg:pb-2">
-            <Link to={"/product"}>Stores</Link>
+            <Link to={"/products"}>Stores</Link>
           </div>
         </div>
         <div className="İcons flex gap-3 items-center ">

@@ -55,6 +55,18 @@
     },
     "subCategory": {
       "type": "string"
+    },
+    "textTitle": {
+      "type": "string"
+    },
+    "textName": {
+      "type": "string"
+    },
+    "textInformation": {
+      "type": "string"
+    },
+    "textBody": {
+      "type": "string"
     }
   }
 }

@@ -6,6 +6,7 @@ const initialState = {
   loading: false,
   error: null,
   products: [],
+  product: [],
   categories: [],
   card: [],
   number: [],
@@ -80,6 +81,9 @@ export const homeSlice = createSlice({
     isClick: (state, action) => {
       state.click = action.payload.click;
     },
+    addProduct: (state, action) => {
+      state.product = action.payload.item;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchItems.pending, (state) => {
@@ -122,7 +126,7 @@ export const homeSlice = createSlice({
   },
 });
 
-export const { filterItems, removeİtems, filterPrice, isClick } =
+export const { filterItems, removeİtems, filterPrice, isClick, addProduct } =
   homeSlice.actions;
 
 export default homeSlice.reducer;

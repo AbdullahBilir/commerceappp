@@ -850,6 +850,10 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'api::category.category'
     >;
     subCategory: Attribute.String;
+    textTitle: Attribute.String;
+    textName: Attribute.String;
+    textInformation: Attribute.String;
+    textBody: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
