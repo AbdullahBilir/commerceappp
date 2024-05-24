@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
+import { FaRegHeart } from "react-icons/fa6";
+import { RiScalesFill } from "react-icons/ri";
 
 function Product() {
   const data = useSelector((state) => state.home);
@@ -25,7 +27,7 @@ function Product() {
               className="h-[150px] w-full pl-6"
               src={
                 baseUrl +
-                data?.product?.attributes?.image?.data[1]?.attributes?.formats
+                data?.product?.attributes?.image?.data[0]?.attributes?.formats
                   ?.large?.url
               }
             />
@@ -36,7 +38,7 @@ function Product() {
               className="h-[150px] w-full my-4 pl-6"
               src={
                 baseUrl +
-                data?.product?.attributes?.image?.data[0]?.attributes?.formats
+                data?.product?.attributes?.image?.data[1]?.attributes?.formats
                   ?.large?.url
               }
             />
@@ -94,6 +96,42 @@ function Product() {
         <div className="px-4 py-2 my-6 flex items-center bg-blue-500 w-[200px] rounded justify-center cursor-pointer">
           <MdOutlineAddShoppingCart className="text-2xl text-white" />
           <p className="pl-2 text-white">Add To Card</p>
+        </div>
+        <div>
+          <div className="flex items-center gap-4 text-blue-500 text-sm ">
+            <div className="flex items-center gap-2">
+              <FaRegHeart className="cursor-pointer" />
+              <div className="cursor-pointer">ADD TO FOVORİTE LİST</div>
+            </div>
+            <div className="flex items-center gap-2">
+              <RiScalesFill className="cursor-pointer text-xl" />
+              <div className="cursor-pointer">ADD TO COMPARE</div>
+            </div>
+          </div>
+        </div>
+        <div className="my-16 text-sm text-gray-500 pr-16">
+          <p className="my-2">Vendor: {data?.product?.attributes?.vendor}</p>
+          <p className="my-2">
+            Product Type: {data?.product?.attributes?.category}
+          </p>
+          <p>
+            Gender:{" "}
+            <span className="ml-1">
+              {data?.product?.attributes?.subCategory.toUpperCase()}
+            </span>
+          </p>
+          <hr className="mt-4 " />
+        </div>
+        <div className="text-xs text-gray-500">
+          <div className="my-2">
+            <p className="my-1">DESCRIPTION</p>
+            <hr className="w-[150px]" />
+          </div>
+          <div className="my-2">
+            <p className="my-1">ITEM INFORMATİON</p>
+            <hr className="w-[150px]" />
+          </div>
+          <p>FAQ</p>
         </div>
       </div>
     </div>

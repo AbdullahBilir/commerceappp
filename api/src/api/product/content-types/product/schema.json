@@ -67,6 +67,9 @@
     },
     "textBody": {
       "type": "string"
+    },
+    "vendor": {
+      "type": "string"
     }
   }
 }
