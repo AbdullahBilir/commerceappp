@@ -31,11 +31,11 @@ function Products() {
 
   return (
     <div className="flex">
-      <div className="w-1/4">
+      <div className="w-1/4 max-md:hidden">
         <ProductsCategory />
       </div>
-      <div className="w-3/4 max-md:w-full flex flex-wrap px-12 relative">
-        <div className="w-full flex justify-end items-start px-20">
+      <div className="w-3/4 max-md:w-full flex flex-wrap max-md:items-center max-md:justify-center relative">
+        <div className="w-full flex justify-end items-start  px-8  ">
           <select
             className=""
             onChange={(e) => {

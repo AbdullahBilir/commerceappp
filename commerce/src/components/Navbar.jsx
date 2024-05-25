@@ -8,6 +8,15 @@ import { filterCategory, filterItems, isClick } from "../features/homeSlice";
 
 function Navbar() {
   const data = useSelector((state) => state.home);
+
+  let basketTotal = 0;
+
+  for (let i = 0; i < data.basket.length; i++) {
+    basketTotal += data.basket[i];
+  }
+
+  console.log(data.basketProduct);
+
   const [show, setShow] = useState(false);
 
   const [click, setClick] = useState(null);
@@ -79,7 +88,10 @@ function Navbar() {
           <CiSearch className="text-lg cursor-pointer hover:text-blue-500 transition-all duration-300 " />
           <CiUser className="text-lg cursor-pointer hover:text-blue-500 transition-all duration-300 max-md:hidden" />
           <CiHeart className="text-lg cursor-pointer hover:text-blue-500 transition-all duration-300 max-md:hidden" />
-          <PiShoppingCartThin className="text-lg cursor-pointer hover:text-blue-500 transition-all duration-300 max-md:hidden" />
+          <PiShoppingCartThin className="text-lg cursor-pointer hover:text-blue-500 transition-all duration-300 max-md:hidden relative" />
+          <span className="absolute right-2 text-[9px] max-lg:right-10 max-md:hidden top-4 border px-1 rounded-full bg-blue-500 text-white flex justify-center items-center">
+            {basketTotal <= 0 ? 0 : basketTotal}
+          </span>
           <LiaBarsSolid
             className="text-lg cursor-pointer hidden max-lg:block hover:text-blue-500 transition-all duration-300 "
             onClick={() => {

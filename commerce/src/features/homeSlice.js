@@ -10,6 +10,8 @@ const initialState = {
   categories: [],
   card: [],
   number: [],
+  basket: [],
+  basketProduct: [],
   click: null,
   ProductsCategory: [
     "Sweatshirt",
@@ -84,6 +86,12 @@ export const homeSlice = createSlice({
     addProduct: (state, action) => {
       state.product = action.payload.item;
     },
+    AddBasket: (state, action) => {
+      state.basket.push(action.payload.item);
+    },
+    AddBasketProduct: (state, action) => {
+      state.basketProduct.push(action.payload.subİtem);
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchItems.pending, (state) => {
@@ -126,7 +134,14 @@ export const homeSlice = createSlice({
   },
 });
 
-export const { filterItems, removeİtems, filterPrice, isClick, addProduct } =
-  homeSlice.actions;
+export const {
+  filterItems,
+  removeİtems,
+  filterPrice,
+  isClick,
+  addProduct,
+  AddBasket,
+  AddBasketProduct,
+} = homeSlice.actions;
 
 export default homeSlice.reducer;

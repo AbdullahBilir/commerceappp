@@ -31,7 +31,7 @@ function ProductsCategory() {
   };
 
   return (
-    <div className=" my-2 px-16 gap-2 mt-10 ">
+    <div className=" my-2 px-16 gap-2 mt-10  max-md:hidden">
       <h1 className="my-4 text-xl font-semibold ">Products Category</h1>
       {data.ProductsCategory.map((item, index) => {
         return (
