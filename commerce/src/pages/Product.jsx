@@ -16,8 +16,8 @@ function Product() {
   const dispatch = useDispatch();
 
   const handleClick = (count, item) => {
-    dispatch(AddBasket({ item: count }));
-    dispatch(AddBasketProduct({ subİtem: item }));
+    dispatch(AddBasketProduct({ subİtem: item, item: count }));
+    dispatch(AddBasket({ eleman: count }));
   };
 
   return (

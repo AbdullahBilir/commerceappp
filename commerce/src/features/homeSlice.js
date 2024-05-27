@@ -87,10 +87,21 @@ export const homeSlice = createSlice({
       state.product = action.payload.item;
     },
     AddBasket: (state, action) => {
-      state.basket.push(action.payload.item);
+      state.basket.push(action.payload.eleman);
     },
     AddBasketProduct: (state, action) => {
-      state.basketProduct.push(action.payload.subİtem);
+      const existingItem = state.basketProduct.find(
+        (item) => item.id === action.payload.subİtem.id
+      );
+
+      if (existingItem) {
+        existingItem.quantity += action.payload.item;
+      } else {
+        state.basketProduct.push({
+          ...action.payload.subİtem,
+          quantity: action.payload.item,
+        });
+      }
     },
   },
   extraReducers: (builder) => {

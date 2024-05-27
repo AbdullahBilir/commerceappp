@@ -5,6 +5,7 @@ import { PiShoppingCartThin } from "react-icons/pi";
 import { LiaBarsSolid } from "react-icons/lia";
 import { useDispatch, useSelector } from "react-redux";
 import { filterCategory, filterItems, isClick } from "../features/homeSlice";
+import Basket from "./Basket";
 
 function Navbar() {
   const data = useSelector((state) => state.home);
@@ -14,8 +15,6 @@ function Navbar() {
   for (let i = 0; i < data.basket.length; i++) {
     basketTotal += data.basket[i];
   }
-
-  console.log(data.basketProduct);
 
   const [show, setShow] = useState(false);
 
@@ -84,14 +83,18 @@ function Navbar() {
             <Link to={"/products"}>Stores</Link>
           </div>
         </div>
-        <div className="İcons flex gap-3 items-center ">
+        <div className="İcons flex gap-3 items-center relative">
           <CiSearch className="text-lg cursor-pointer hover:text-blue-500 transition-all duration-300 " />
           <CiUser className="text-lg cursor-pointer hover:text-blue-500 transition-all duration-300 max-md:hidden" />
           <CiHeart className="text-lg cursor-pointer hover:text-blue-500 transition-all duration-300 max-md:hidden" />
           <PiShoppingCartThin className="text-lg cursor-pointer hover:text-blue-500 transition-all duration-300 max-md:hidden relative" />
-          <span className="absolute right-2 text-[9px] max-lg:right-10 max-md:hidden top-4 border px-1 rounded-full bg-blue-500 text-white flex justify-center items-center">
+
+          <span className="absolute -right-2 text-[9px] max-lg:right-6 max-md:hidden -top-3 border px-1 rounded-full bg-blue-500 text-white flex justify-center items-center">
             {basketTotal <= 0 ? 0 : basketTotal}
           </span>
+          <div className="absolute top-10 right-0 z-10">
+            <Basket></Basket>
+          </div>
           <LiaBarsSolid
             className="text-lg cursor-pointer hidden max-lg:block hover:text-blue-500 transition-all duration-300 "
             onClick={() => {
