@@ -89,6 +89,11 @@ export const homeSlice = createSlice({
     AddBasket: (state, action) => {
       state.basket.push(action.payload.eleman);
     },
+    remevoBasket: (state, action) => {
+      state.basketProduct = state.basketProduct.filter((item) => {
+        return item.id !== action.payload.id;
+      });
+    },
     AddBasketProduct: (state, action) => {
       const existingItem = state.basketProduct.find(
         (item) => item.id === action.payload.subİtem.id
@@ -153,6 +158,7 @@ export const {
   addProduct,
   AddBasket,
   AddBasketProduct,
+  remevoBasket,
 } = homeSlice.actions;
 
 export default homeSlice.reducer;
