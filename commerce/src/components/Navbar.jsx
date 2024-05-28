@@ -55,8 +55,8 @@ function Navbar() {
             Children
           </Link>
         </div>
-        <div className=" hover:text-blue-500 transition-all duration-300 max-lg:pb-2">
-          <Link to={""}>Accessories</Link>
+        <div className=" hover:text-blue-500 transition-all duration-300 max-lg:pb-2 cursor-pointer">
+          Accessories
         </div>
       </div>
 
@@ -77,11 +77,13 @@ function Navbar() {
           <div className=" hover:text-blue-500 transition-all duration-300 max-lg:pb-2">
             <Link to={""}>About</Link>
           </div>
-          <div className=" hover:text-blue-500 transition-all duration-300 max-lg:pb-2">
-            <Link to={"/product"}>Contact</Link>
+          <div className=" hover:text-blue-500 transition-all duration-300 max-lg:pb-2 cursor-pointer">
+            Contact
           </div>
           <div className=" hover:text-blue-500 transition-all duration-300 max-lg:pb-2">
-            <Link to={"/products"}>Stores</Link>
+            <Link to={"/products"} onClick={() => handleClick(null)}>
+              Stores
+            </Link>
           </div>
         </div>
         <div className="İcons flex gap-3 items-center relative">
