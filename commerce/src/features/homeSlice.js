@@ -108,6 +108,9 @@ export const homeSlice = createSlice({
         });
       }
     },
+    resetBasket: (state, action) => {
+      state.basketProduct = [];
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchItems.pending, (state) => {
@@ -159,6 +162,7 @@ export const {
   AddBasket,
   AddBasketProduct,
   remevoBasket,
+  resetBasket,
 } = homeSlice.actions;
 
 export default homeSlice.reducer;

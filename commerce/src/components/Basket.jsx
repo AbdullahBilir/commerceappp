@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FaRegTrashAlt } from "react-icons/fa";
-import { remevoBasket } from "../features/homeSlice";
+import { remevoBasket, resetBasket } from "../features/homeSlice";
 
 function Basket() {
   const data = useSelector((state) => state.home);
@@ -20,6 +20,10 @@ function Basket() {
 
   const handeClick = (item) => {
     dispatch(remevoBasket({ id: item }));
+  };
+
+  const resetClick = () => {
+    dispatch(resetBasket());
   };
 
   return (
@@ -67,6 +71,12 @@ function Basket() {
           <h2 className="text-lg">SubTotal:</h2>
           <p className="text-normal">{totalItem} TL</p>
         </div>
+        <button
+          onClick={resetClick}
+          className="ml-2 px-2 btn py-1 my-2 rounded-sm border-none text-white bg-red-500"
+        >
+          Reset Products
+        </button>
       </div>
     </div>
   );
