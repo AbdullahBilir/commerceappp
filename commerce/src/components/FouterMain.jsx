@@ -1,14 +1,23 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCategory } from "../features/homeSlice";
+import { filterCategory, isClick } from "../features/homeSlice";
+import { Link } from "react-router-dom";
 
 function FouterMain() {
   const data = useSelector((state) => state.home);
-  const dispatch = useDispatch();
+  const dispacth = useDispatch();
+
+  const handleClick = (eleman) => {
+    eleman = eleman.toLowerCase();
+    console.log(eleman);
+    dispacth(isClick({ click: eleman }));
+  };
 
   useEffect(() => {
-    dispatch(fetchCategory);
-  }, []);
+    if (data.click) {
+      dispacth(filterCategory());
+    }
+  }, [data.click, dispacth]);
 
   return (
     <div className="bg-slate-200 py-16  ">
@@ -19,12 +28,15 @@ function FouterMain() {
             {data?.categories?.data?.map((eleman, index) => {
               return (
                 <li
+                  onClick={() => handleClick(eleman.attributes.title)}
                   className="mb-1 cursor-pointer  text-sm text-gray-500 capitalize"
                   key={index}
                 >
-                  <span className="hover:underline">
-                    {eleman.attributes.title}
-                  </span>
+                  <Link to={"/products"}>
+                    <span className="hover:underline">
+                      {eleman.attributes.title}
+                    </span>
+                  </Link>
                 </li>
               );
             })}

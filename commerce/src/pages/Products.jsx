@@ -3,11 +3,18 @@ import ProductsCategory from "../components/ProductsCategory";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchItems, filterCategory } from "../features/homeSlice";
 import ProductsList from "../components/ProductsList";
+import { useLocation } from "react-router-dom";
 
 function Products() {
   const baseUrl = "http://localhost:1337";
   const [sort, setSort] = useState(null);
   const dispatch = useDispatch();
+
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   const data = useSelector((state) => state.home);
 
