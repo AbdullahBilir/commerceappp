@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { remevoBasket, resetBasket } from "../features/homeSlice";
+import { Link } from "react-router-dom";
 
 function Basket() {
   const data = useSelector((state) => state.home);

@@ -4,12 +4,19 @@ import { MdOutlineAddShoppingCart } from "react-icons/md";
 import { FaRegHeart } from "react-icons/fa6";
 import { RiScalesFill } from "react-icons/ri";
 import { AddBasket, AddBasketProduct } from "../features/homeSlice";
+import { useLocation } from "react-router-dom";
 
 function Product() {
   const data = useSelector((state) => state.home);
 
   const [count, setCount] = useState(1);
   const [active, setActive] = useState(0);
+
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   const baseUrl = "http://localhost:1337";
 

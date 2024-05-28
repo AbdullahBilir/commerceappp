@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { filterItems } from "../features/homeSlice";
+import { useSelector } from "react-redux";
+
 import SlideList from "./SlideList";
 
 function Slide({ setShow, show, desc }) {
-  const dispatch = useDispatch();
   const data = useSelector((state) => state.home);
 
   useEffect(() => {
